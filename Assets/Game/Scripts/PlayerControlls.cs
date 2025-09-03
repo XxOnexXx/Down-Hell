@@ -8,6 +8,7 @@ public class PlayerControlls : MonoBehaviour
     [SerializeField] Color color;
     [SerializeField] float fireRate = 0.3f;
     [SerializeField] float maxVelocity = 10f;
+    
     public bool isOnPlatform;
     Rigidbody2D platRb;
 
@@ -34,6 +35,8 @@ public class PlayerControlls : MonoBehaviour
 
     Rigidbody2D rb;
 
+    Vector3 tempVar;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,11 +46,13 @@ public class PlayerControlls : MonoBehaviour
     void Start()
     {
         jumpUsed = maxJumps;
+        tempVar = transform.position;
+        
     }
 
 
     void Update()
-    {  
+    {
         HandleJump();
         GroundCheck();
 
@@ -58,7 +63,12 @@ public class PlayerControlls : MonoBehaviour
             jumpUsed = maxJumps;
             isJumping = false;
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = tempVar;
+        }
+       
 
     }
 
@@ -70,7 +80,13 @@ public class PlayerControlls : MonoBehaviour
             Shooting.Instance.Shoot();
             timer = 0;
         }
+        Shooting.Instance.ApplyShootHover(rb);
+        Debug.Log(rb.linearVelocity.y);
 
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity -= myGravity * moveStats.fallMultiplier;
+        }
     }
 
     void OnEnable()
@@ -115,18 +131,10 @@ public class PlayerControlls : MonoBehaviour
             isJumping = true;
             if (isGrounded) //|| jumpUsed >= 1)
             {
-
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, moveStats.jumpForce);
-            }    
-        }
-
-        
-        if (rb.linearVelocity.y < 0)
-            {
-                rb.linearVelocity -= myGravity * moveStats.fallMultiplier;
             }
-
-
+        }
+        
     }
 
     public void GroundCheck()

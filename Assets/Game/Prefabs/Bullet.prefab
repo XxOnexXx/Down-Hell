@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.87165, y: 1.05038, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1574205367759229721}
   - {fileID: 1549697210594195937}
@@ -88,6 +88,8 @@ MonoBehaviour:
   burst: {fileID: 11400000, guid: 425ac25a6e97b6242ab689c25cf8bc8a, type: 2}
   bulletShell: {fileID: 8079583839557217070, guid: 6f8e54a362f4c014f87e3d9a13f6c94c, type: 3}
   collsionPos: {fileID: 1549697210594195937}
+  moveStats: {fileID: 11400000, guid: 2c33edb4de9d5404d80a1165b6b1ac14, type: 2}
+  bullerHover: 5
 --- !u!50 &3873963172389669533
 Rigidbody2D:
   serializedVersion: 5

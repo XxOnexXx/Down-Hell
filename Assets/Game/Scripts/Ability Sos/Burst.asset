@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Burst
   m_EditorClassIdentifier: Assembly-CSharp::Burs
   fireRate: 0.07
-  firePower: 40
-  recoil: 0.5
+  firePower: 60.3
+  recoil: 3
+  recoilMultiflier: 15
+  destroyTime: 0.83

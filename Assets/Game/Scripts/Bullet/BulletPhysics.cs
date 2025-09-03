@@ -7,7 +7,9 @@ public class BulletPhysics : MonoBehaviour
     [SerializeField] Burs burst;
     [SerializeField] GameObject bulletShell;
     [SerializeField] Transform collsionPos;
+    [SerializeField] MoveStats moveStats;
     Rigidbody2D b_Rb;
+
     void Start()
     {
         b_Rb = GetComponent<Rigidbody2D>();
@@ -26,9 +28,8 @@ public class BulletPhysics : MonoBehaviour
 
     void HandleShoot()
     {
-        b_Rb.linearVelocity = Vector2.down * burst.firePower;
         Rigidbody2D playerRb = FindFirstObjectByType<PlayerControlls>().GetComponent<Rigidbody2D>();
-        playerRb.AddForce(Vector2.up * burst.recoil, ForceMode2D.Impulse);
+        b_Rb.linearVelocity = Vector2.down * burst.firePower + playerRb.linearVelocity;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

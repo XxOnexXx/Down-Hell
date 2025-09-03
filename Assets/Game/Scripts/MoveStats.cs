@@ -12,6 +12,14 @@ public class MoveStats : ScriptableObject
     [SerializeField] public float jumpForce = 4f;
     [Range(0, 5)]
     [SerializeField] public float fallMultiplier = 2f;
+    [Range(0, 75)]
+    
+
+    [Space]
+
+    [Header("falling")]
+    [SerializeField] public float maxFallingVelocity = 25f;
+    
 
 
     
